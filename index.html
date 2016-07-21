@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Cat Clicker V1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	
+	
+</head>
+<body>
+	<div class="row">
+		<img id="catImage" class="catImg" src="img/cat.jpg" alt="It's a cat">
+	</div>
+	<div class="row">
+		<h1 id="clickerCounter">0</h1>
+	</div>
+</body>
+<script>
+
+		var catImgElement = $("#catImage");
+		var clickCounter = 0;
+		///click listener in jQuery
+
+		catImgElement.click(function(e) {
+			clickCounter +=1;
+		  	clickerCounter.innerHTML = clickCounter + "";
+		});
+	</script>
+</html>
