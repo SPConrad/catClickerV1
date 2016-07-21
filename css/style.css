@@ -1,18 +1,25 @@
-* {
-	margin: auto;
+    * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -box-sizing: border-box
 }
 
 h1 {
-	text-align: center;
+	display: block;
 }
 
 .row {
-	width: 100;
+	width: 100%;
+}
+
+.catContainer {
+	vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    max-width: 50%;
 }
 
 .catImg {
-	max-width: 100%;	
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
+	max-width: 100%;
+	padding: 0px 10px 0px 10px;
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="row">
-		<img id="catImage" class="catImg" src="img/cat.jpg" alt="It's a cat">
+		<img id="catImage" class="catImg" src="img/cat0.jpg" alt="It's a cat">
 	</div>
 	<div class="row">
 		<h1 id="clickerCounter">0</h1>
@@ -24,6 +24,7 @@
 
 		catImgElement.click(function(e) {
 			clickCounter +=1;
+			console.log(clickerCounter);
 		  	clickerCounter.innerHTML = clickCounter + "";
 		});
 	</script>
