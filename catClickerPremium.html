@@ -49,22 +49,22 @@
 	var drew = Object.create(Cat);
 	drew.name = "Drew";
 
-	var catList = new Array(jeff, brad, ryan, vinny, drew);
-
+	var catList = new Array(jeff, brad, ryan, vinny, drew);	
+	$('#showCase').append('<div id="' + catShowcase + '" class="catShowcase"></div>');
+	$('#showCase').append('<div id="primeClicker" class="counter"></div>');
+	catShowcase = document.getElementById(catShowcase);
+	var primeClicker = document.getElementById("primeClicker");
 
 	function assignFunc(cat){
 		var clickCounter = document.getElementById(cat.clickerElement);
 		$('#' + cat.imageElement).click(function(e) {
 			catShowcase.innerHTML = '<img src="' + cat.fileName + '" class="catImagePrime" alt="Cat Image Prime">';
-
 			cat.clickCounter += 1;
 		  	clickCounter.innerHTML = ""  + cat.clickCounter;
+			primeClicker.innerHTML = cat.clickCounter;
+
 		});
 	}
-	
-	$('#showCase').append('<div id="' + catShowcase + '" class="catShowcase"></div>');
-	catShowcase = document.getElementById(catShowcase);
-
 	for (var i = 0; i < numOfCats; i++){
 		catList[i].id = i;
 		catList[i].fileName = imageDirectory + "cat" + i + ".jpg";
