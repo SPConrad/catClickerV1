@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Cat Clicker V5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>	
+</head>
+<body>
+	<div id="catsDiv">
+	</div>
+</body>
+<script>
+	var numOfCats = 5; 
+	var cat0 = "Jeff";
+	var cat1 = "Brad";
+	var cat2 = "Ryan";
+	var cat3 = "Vinny";
+	var cat4 = "Drew";
+
+	var catList = ["Jeff", "Brad", "Ryan", "Vinny", "Drew"]; 
+
+	var catImgElement = [];//$("#catImage");
+	var clickerCounterElementID;
+	var counters = [];
+	///click listener in jQuery
+
+	var $catsDiv = $('#catsDiv');
+	var $catImageHolderElement = $('#catImageHolder');
+	var $clickerCounterHolderElement = $('#clickerCounters');
+
+
+	function assignFunc(locCatImgElement, locClickerCounterElementID, locCounter){
+		localClickerCounterElementID = locClickerCounterElementID;
+		var local = document.getElementById(localClickerCounterElementID);
+		$('#' + locCatImgElement).click(function(e) {	
+			locCounter += 1;
+		  	local.innerHTML = ""  + locCounter;
+		});
+	}
+	for (var i = 0; i < numOfCats; i++){
+		var clickCounter = 0;
+		catImgElement[i] = "catImageElement" + i;
+		clickerCounterElementID = "clickerCounter" + i;
+		counters[i] = 0;
+
+		var catContainer = "catContainer" + i;
+		$catsDiv.append('<div id="' + catContainer +'" class="catContainer"></div>');
+
+
+		$('#' + catContainer).append('<img id="' + catImgElement[i] + '" src="img/cat' + i + '.jpg" class="catImg" alt="Cat Image' + i + '">')
+
+		$('#' + catContainer).append('<p class="countDisplay"  id="' + clickerCounterElementID + '"">---</p>');
+
+		assignFunc(catImgElement[i], clickerCounterElementID, counters[i]);	
+		
+	}
+
+	
+	
+</script>
+</html>
