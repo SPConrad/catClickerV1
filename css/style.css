@@ -61,3 +61,8 @@ p {
 .counter {
 	width: 30%
 }
+
+
+.catShowcase {
+	min-height: 50px;
+}

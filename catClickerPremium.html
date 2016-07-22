@@ -11,59 +11,81 @@
 		<div id="catRoster" class="col-6">
 		</div>
 		<div id="showCase" class="col-6">		
-			<img id="catShowcase" src="img/cat0.jpg" class="catImagePrime" alt="Cat Imag Prime">
 		</div>
 	</div>
 </body>
 <script>
 	var numOfCats = 5; 
 
-	var catList = ["Jeff", "Brad", "Ryan", "Vinny", "Drew"]; 
 
-	var catImgElement = [];//$("#catImage");
-	var clickerCounterElementID;
-	var counters = [];
 	var catThumbnailID = "catThumbnail";
-	///click listener in jQuery
 
 	var $catRoster = $('#catRoster');
-	var $catImageHolderElement = $('#catImageHolder');
-	var $clickerCounterHolderElement = $('#clickerCounters');
+	var catShowcase = "catShowcase";
+
+	var imageDirectory = "img/";
 
 	var $catThumbnail;
 
-	console.log($catRoster);
+	//console.log($catRoster);
+
+	var Cat = {
+		id:  0,
+		name: "",
+		fileName: "",
+		imageElement: "",
+		clickCounter: 0,
+		clickerElement: "",
+	}
+	////get these from a comma limited text file?
+	var jeff = Object.create(Cat);
+	jeff.name = "Jeff";
+	var brad = Object.create(Cat);
+	brad.name = "Brad";
+	var ryan = Object.create(Cat);
+	ryan.Name = "Ryan";
+	var vinny = Object.create(Cat);
+	vinny.name = "Vinny";
+	var drew = Object.create(Cat);
+	drew.name = "Drew";
+
+	var catList = new Array(jeff, brad, ryan, vinny, drew);
 
 
-	function assignFunc(locCatImgElement, locClickerCounterElementID, locCounter){
-		localClickerCounterElementID = locClickerCounterElementID;
-		var local = document.getElementById(localClickerCounterElementID);
-		$('#' + locCatImgElement).click(function(e) {	
-			locCounter += 1;
-		  	local.innerHTML = ""  + locCounter;
+	function assignFunc(cat){
+		var clickCounter = document.getElementById(cat.clickerElement);
+		$('#' + cat.imageElement).click(function(e) {
+			catShowcase.innerHTML = '<img src="' + cat.fileName + '" class="catImagePrime" alt="Cat Image Prime">';
+
+			cat.clickCounter += 1;
+		  	clickCounter.innerHTML = ""  + cat.clickCounter;
 		});
 	}
-
+	
+	$('#showCase').append('<div id="' + catShowcase + '" class="catShowcase"></div>');
+	catShowcase = document.getElementById(catShowcase);
 
 	for (var i = 0; i < numOfCats; i++){
-		var clickCounter = 0;
-		catImgElement[i] = "catImageElement" + i;
-		clickerCounterElementID = "clickerCounter" + i;
-		counters[i] = 0;
+		catList[i].id = i;
+		catList[i].fileName = imageDirectory + "cat" + i + ".jpg";
+		catList[i].imageElement = "catImageElement" + i;
+		catList[i].clickerElement = "clickerCounter" + i;
+		catList[i].clickCounter = 0;
+		//console.log(catList[i]);
 
 		var catContainer = "catContainer" + i;
 
 
 
-		$catRoster.append('<div id="' + catThumbnailID + i + '" class="catThumbnail"></div>')
+		$catRoster.append('<div id="' + catThumbnailID + i + '" class="catThumbnail"></div>');
 		$catThumbnail = $('#' + catThumbnailID + i);
 
 
-		$catThumbnail.append('<img id="' + catImgElement[i] + '" src="img/cat' + i + '.jpg" class="catImg" alt="Cat Image' + i + '">')
+		$catThumbnail.append('<img id="' + catList[i].imageElement + '" src="' + catList[i].fileName + '" class="catImg" alt="Cat Image' + i + '">')
 
-		$catThumbnail.append('<p id="' + clickerCounterElementID + '" class="counter">---</p>');
+		$catThumbnail.append('<p id="' + catList[i].clickerElement + '" class="counter">---</p>');
 
-		assignFunc(catImgElement[i], clickerCounterElementID, counters[i]);	
+		assignFunc(catList[i]);	
 		
 	}
 
