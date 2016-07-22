@@ -43,7 +43,7 @@
 	var brad = Object.create(Cat);
 	brad.name = "Brad";
 	var ryan = Object.create(Cat);
-	ryan.Name = "Ryan";
+	ryan.name = "Ryan";
 	var vinny = Object.create(Cat);
 	vinny.name = "Vinny";
 	var drew = Object.create(Cat);
@@ -72,7 +72,7 @@
 		catList[i].clickerElement = "clickerCounter" + i;
 		catList[i].clickCounter = 0;
 		//console.log(catList[i]);
-
+		console.log(catList[i].name);
 		var catContainer = "catContainer" + i;
 
 
@@ -82,6 +82,8 @@
 
 
 		$catThumbnail.append('<img id="' + catList[i].imageElement + '" src="' + catList[i].fileName + '" class="catImg" alt="Cat Image' + i + '">')
+
+		$catThumbnail.append('<h2>' + catList[i].name +'</h2');
 
 		$catThumbnail.append('<p id="' + catList[i].clickerElement + '" class="counter">---</p>');
 
